@@ -58,7 +58,7 @@ class RecetasViewController: SwipeTableViewController, UISearchBarDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! RecetaDetailViewController
-        
+            
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedReceta = recetasArray?[indexPath.row]
         }

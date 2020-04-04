@@ -10,32 +10,29 @@ import UIKit
 import RealmSwift
 import ChameleonFramework
 
-protocol IngredientTableViewControllerDelegate {
-    func addIngredient(name:String,measure:String,amount: String)
-}
 
-class IngredientTableViewController: UITableViewController {
-
-    var delegate: IngredientTableViewControllerDelegate! = nil
+class IngredientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let realm = try! Realm()
     
     var ingredientsArray: Results<Ingredient>?
     var newReceta = Receta()
     
+    @IBOutlet weak var ingredientTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        tableView.separatorStyle = .none
+        
+        ingredientTable.separatorStyle = .none
     }
     
     
     //MARK - TableView Datasource methods
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientsArray?.count ?? 1
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                     
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
             

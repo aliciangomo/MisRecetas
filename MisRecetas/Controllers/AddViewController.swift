@@ -10,10 +10,11 @@ import UIKit
 import RealmSwift
 import ChameleonFramework
 
-class AddViewController: UIViewController, UITextFieldDelegate, IngredientTableViewControllerDelegate {
+class AddViewController: UIViewController, UITextFieldDelegate {
     
     let realm = try! Realm()
-
+    
+    var newReceta = Receta()
     
     @IBOutlet weak var recetaImage: UIImageView!
     @IBOutlet weak var recetaName: UITextField!
@@ -42,22 +43,28 @@ class AddViewController: UIViewController, UITextFieldDelegate, IngredientTableV
         }
     }
       
-    
-//    @IBAction func addIngredient(_ sender: UIButton) {
-//       IngredientTableViewController(forAction: addIngredient(), sender: self))
-//    }
-    
-    
-    func addIngredient(name: String, measure: String, amount: String) {
-            print ("Hello")
-        }
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        newReceta.name = recetaName.text ?? ""
+        newReceta.link = recetaLink.text ?? ""
+        newReceta.instructions = recetaPasos.text ?? ""
         
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DisplayIngredients"{
-                let vc = segue.destination as! IngredientTableViewController
-                vc.delegate = self
-            }
+    
+    }
+    
+    
+    
+//    https://stackoverflow.com/questions/29582200/how-do-i-get-the-views-inside-a-container-in-swift
+    
+    func performSegue(withIdentifier: "GoToIngredients", sender: self) {
+        
+         
+    }
+        
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let vc = segue.destination as! IngredientViewController
+            vc.newReceta =
+            if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedReceta = recetasArray?[indexPath.row]
         }
         
         
