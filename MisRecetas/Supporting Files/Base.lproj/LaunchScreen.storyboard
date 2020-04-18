@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,37 +16,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="o6g-Eo-0eC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asparagus" translatesAutoresizingMaskIntoConstraints="NO" id="o6g-Eo-0eC">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Un lugar donde guardar tus recetas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8X-Ea-asC">
-                                <rect key="frame" x="0.0" y="563" width="414" height="202"/>
-                                <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGG-Wd-fQu" userLabel="LaunchTitle">
+                                <rect key="frame" x="0.0" y="732" width="414" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mis Recetas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8X-Ea-asC">
+                                        <rect key="frame" x="44" y="0.0" width="326.33333333333331" height="100"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="50"/>
+                                        <color key="textColor" name="BrandDarkGreen"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="vzn-2l-SnJ"/>
+                                    <constraint firstItem="W8X-Ea-asC" firstAttribute="top" secondItem="dGG-Wd-fQu" secondAttribute="top" id="0Oj-Iq-eqY"/>
+                                    <constraint firstItem="W8X-Ea-asC" firstAttribute="centerX" secondItem="dGG-Wd-fQu" secondAttribute="centerX" id="DUW-K5-BYh"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="cKx-fU-DL6"/>
+                                    <constraint firstItem="W8X-Ea-asC" firstAttribute="centerY" secondItem="dGG-Wd-fQu" secondAttribute="centerY" id="jDb-Ve-ma1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="o6g-Eo-0eC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0LN-ts-z2K"/>
-                            <constraint firstAttribute="bottom" secondItem="o6g-Eo-0eC" secondAttribute="bottom" constant="20" symbolic="YES" id="F6c-99-2iH"/>
-                            <constraint firstItem="o6g-Eo-0eC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uhg-WM-tPG"/>
-                            <constraint firstItem="W8X-Ea-asC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VUk-sk-Yg5"/>
-                            <constraint firstItem="o6g-Eo-0eC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="20" symbolic="YES" id="thF-S0-Ejj"/>
+                            <constraint firstItem="dGG-Wd-fQu" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8KL-qR-b6y"/>
+                            <constraint firstAttribute="trailing" secondItem="o6g-Eo-0eC" secondAttribute="trailing" id="Bn2-KP-vl6"/>
+                            <constraint firstAttribute="bottom" secondItem="o6g-Eo-0eC" secondAttribute="bottom" id="F6c-99-2iH"/>
+                            <constraint firstAttribute="trailing" secondItem="dGG-Wd-fQu" secondAttribute="trailing" id="GNh-D2-fNI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dGG-Wd-fQu" secondAttribute="bottom" constant="30" id="gzY-fa-sO5"/>
+                            <constraint firstItem="o6g-Eo-0eC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="nM0-RL-FKO"/>
+                            <constraint firstItem="o6g-Eo-0eC" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="tAY-Pu-JhU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="-40"/>
+            <point key="canvasLocation" x="-684" y="64"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Launchscreen" width="666.5" height="1000"/>
+        <image name="asparagus" width="4480" height="6720"/>
+        <namedColor name="BrandDarkGreen">
+            <color red="0.31600001454353333" green="0.49300000071525574" blue="0.15999999642372131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

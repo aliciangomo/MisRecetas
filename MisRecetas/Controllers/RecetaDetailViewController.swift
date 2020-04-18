@@ -7,106 +7,44 @@
 //
 
 import UIKit
-import RealmSwift
-import ChameleonFramework
+import CoreData
+
 
 class RecetaDetailViewController: UIViewController {
 
     
-    let realm = try! Realm()
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     var selectedReceta : Receta?
+
+    @IBOutlet weak var imageShow: UIImageView!
+    @IBOutlet weak var nameShow: UILabel!
+    @IBOutlet weak var linkShow: UILabel!
+    @IBOutlet weak var pasosShow: UILabel!
+    @IBOutlet weak var ingredientsListShow: UIView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        nameShow.text = selectedReceta?.name
+        linkShow.text = selectedReceta?.link
+        pasosShow.text = selectedReceta?.pasos
+        
+        showIngredients()
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-            
-        guard let navBar = navigationController?.navigationBar else {fatalError("Fatal error")}
-            
-                
-        if let navBarcolour = UIColor(hexString: K.BrandColors.beige) {
-            navBar.barTintColor = navBarcolour
-            navBar.tintColor = ContrastColorOf(navBarcolour, returnFlat: true)
-            navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(navBarcolour, returnFlat: true)]
-            }
-          
+    func showIngredients() {
+        performSegue(withIdentifier: "showIngredients", sender: self)
     }
-
-    //MARK - TableView Delegate Methods
-        
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //
-    //        if let item = selectedReceta?.ingredients[indexPath.row] {
-    //            do{
-    //            try realm.write {
-    //                item.done = !item.done
-    //            }
-    //            } catch {
-    //                print(error)
-    //            }
-    //
-    //            tableView.reloadData()
-    //            tableView.deselectRow(at: indexPath, animated: true)
-    //
-    //        }
-    //    }
     
-    //MARK - Add new item
-        
-    //    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-    //
-    //        var textField = UITextField()
-    //
-    //        let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
-    //
-    //        let action = UIAlertAction(title: "Add item", style: .default) {(action) in
-    //            if let currentCategory = self.selectedCategory {
-    //                do {
-    //                    try self.realm.write {
-    //                        let newItem = Item()
-    //                        newItem.title = textField.text!
-    //                        currentCategory.items.append(newItem)
-    //                    }
-    //                } catch {
-    //                    print(error)
-    //                }
-    //            }
-    //            self.tableView.reloadData()
-    //        }
-    //
-    //        alert.addTextField { (alertTextField) in
-    //        alertTextField.placeholder = "Create new item"
-    //        textField = alertTextField
-    //        }
-    //
-    //        alert.addAction(action)
-    //
-    //        present(alert, animated: true, completion: nil)
-    //    }
-
-    //MARK - Model manipulation methods
-        
-    //    func loadItems() {
-    //        toDoItems = selectedCategory?.items.sorted(byKeyPath: "title")
-    //        tableView.reloadData()
-    //    }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "ShowIngredients") {
+        let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+        let predicate = NSPredicate(format: "parentReceta.name MATCHES %@", selectedReceta!.name!)
+        let vc = segue.destination as! IngredientViewController
+        vc.loadIngredients(with: request, predicate: predicate)
+        }
     }
-    */
 
 }

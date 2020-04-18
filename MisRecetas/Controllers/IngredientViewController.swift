@@ -7,44 +7,118 @@
 //
 
 import UIKit
-import RealmSwift
-import ChameleonFramework
+import CoreData
+
 
 
 class IngredientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    let realm = try! Realm()
     
-    var ingredientsArray: Results<Ingredient>?
-    var newReceta = Receta()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var ingredientsArray = [Ingredient]()
+    
+    var newReceta : Receta? {
+        didSet{
+            loadIngredients()
+        }
+    }
     
     @IBOutlet weak var ingredientTable: UITableView!
+    @IBOutlet weak var addIngredientButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadIngredients()
         ingredientTable.separatorStyle = .none
     }
     
     
-    //MARK - TableView Datasource methods
+    //MARK: - TableView Datasource methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ingredientsArray?.count ?? 1
+        return ingredientsArray.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                    
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
-            
-        cell.textLabel?.text = newReceta.ingredients[indexPath.row].name
+        
+        cell.textLabel?.text = "\(String(describing: ingredientsArray[indexPath.row].name)) - \(String(describing: ingredientsArray[indexPath.row].dose?.measure)) \(String(describing: ingredientsArray[indexPath.row].dose?.amount)) "
         return cell
     }
     
-    //MARK - Model manipulation methods
+    //MARK: - Model manipulation methods
+    
+    func loadIngredients(with request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest(), predicate: NSPredicate? = nil) {
         
-        func loadIngredients() {
-            ingredientsArray = newReceta.ingredients.sorted(byKeyPath: "name")
-            tableView.reloadData()
+            do {
+                ingredientsArray = try context.fetch(request)
+            } catch {
+                print(error)
+            }
+        
+        if ingredientsArray != [] {
+        self.ingredientTable.reloadData()
         }
+    }
+    
 
+    func saveIngredient(ingredient: Ingredient){
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+        ingredientTable.reloadData()
+    }
+
+    //MARK: - Add new ingredient
+
+    @IBAction func addIngredientPressed(_ sender: UIButton) {
+        
+        var nameTextField = UITextField()
+        var measureTextField = UITextField()
+        var amountTextField = UITextField()
+        
+        let alert = UIAlertController(title: "Add new ingredient", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add ingredient", style: .default) {(action) in
+            if let currentReceta = self.newReceta {
+                
+                let newIngredient = Ingredient(context: self.context)
+                newIngredient.name = nameTextField.text!
+                newIngredient.parentReceta = currentReceta
+                let newDose = Dose(context: self.context)
+                newDose.measure = measureTextField.text!
+                newDose.amount = amountTextField.text!
+                newIngredient.dose = newDose
+                self.ingredientsArray.append(newIngredient)
+                
+                self.saveIngredient(ingredient: newIngredient)
+                
+            }
+        }
+    
+    alert.addTextField { (name) in
+        name.placeholder = "Nombre"
+        nameTextField = name
+    }
+    
+    alert.addTextField { (measure) in
+        measure.placeholder = "Medida"
+        measureTextField = measure
+    }
+    
+    alert.addTextField { (amount) in
+        amount.placeholder = "Cantidad"
+        amountTextField = amount
+    }
+    
+    alert.addAction(action)
+    
+    present(alert, animated: true, completion: nil)
 }
+}
+

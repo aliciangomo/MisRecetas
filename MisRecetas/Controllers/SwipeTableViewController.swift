@@ -13,7 +13,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.cell)
         tableView.rowHeight = 80.0
   
     }

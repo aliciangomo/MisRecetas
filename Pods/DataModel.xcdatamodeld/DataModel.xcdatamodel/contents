@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Dose" representedClassName=".Dose" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" attributeType="String"/>
+        <attribute name="measure" attributeType="String"/>
+        <relationship name="ingredient" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="dose" inverseEntity="Ingredient"/>
+    </entity>
+    <entity name="Ingredient" representedClassName=".Ingredient" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="dose" maxCount="1" deletionRule="Nullify" destinationEntity="Dose" inverseName="ingredient" inverseEntity="Dose"/>
+        <relationship name="parentReceta" maxCount="1" deletionRule="Nullify" destinationEntity="Receta" inverseName="ingredients" inverseEntity="Receta"/>
+    </entity>
+    <entity name="Receta" representedClassName=".Receta" syncable="YES" codeGenerationType="class">
+        <attribute name="link" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="pasos" optional="YES" attributeType="String"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="parentReceta" inverseEntity="Ingredient"/>
+    </entity>
+    <elements>
+        <element name="Dose" positionX="377.2421875" positionY="98.19140625" width="128" height="88"/>
+        <element name="Ingredient" positionX="168.21875" positionY="117.96484375" width="128" height="88"/>
+        <element name="Receta" positionX="-64.3671875" positionY="-18" width="152.6640625" height="103"/>
+    </elements>
+</model>

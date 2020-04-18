@@ -7,71 +7,90 @@
 //
 
 import UIKit
-import RealmSwift
-import ChameleonFramework
+import CoreData
+import SwipeCellKit
 
-class RecetasViewController: SwipeTableViewController, UISearchBarDelegate {
 
-    let realm = try! Realm()
+class RecetasViewController: UITableViewController, UISearchBarDelegate {
+
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var recetasArray: Results<Receta>?
+    var recetasArray = [Receta]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
         loadRecetas()
-        tableView.rowHeight = 80.0
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = 100.0
         tableView.separatorStyle = .none
+        
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        guard let navBar = navigationController?.navigationBar else {fatalError("Fatal error")}
-        navBar.backgroundColor = UIColor(hexString: K.BrandColors.beige)
-    }
 
-    //MARK - TableView Datasource methods
+    //MARK: - TableView Datasource methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recetasArray?.count ?? 1
+        return recetasArray.count
     }
      
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UITableViewCell
         
-        if let receta = recetasArray?[indexPath.row] {
+        let receta = recetasArray[indexPath.row]
         
         cell.textLabel?.text = receta.name
-        cell.imageView?.image = UIImage()
-//        cell.textLabel?.textColor = ContrastColorOf(categoryColour, returnFlat: true)
-        }
+        cell.imageView?.image = UIImage(named: "appstore")
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+          guard orientation == .right else { return nil }
+          
+          let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+              
+              self.updateModel(at: indexPath)
+                  
+              }
+              
+          deleteAction.image = UIImage(named: "delete-icon")
+          
+          return [deleteAction]
+      }
+      
+      
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+          var options = SwipeOptions()
+          options.expansionStyle = .destructive
+          return options
+      }
     
-    //MARK - Table View Delegate Methods
+    
+    //MARK: - Table View Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToReceta", sender: self)
+        performSegue(withIdentifier: "ShowReceta", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! RecetaDetailViewController
-            
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedReceta = recetasArray?[indexPath.row]
+        if(segue.identifier == "ShowReceta") {
+            let destinationVC = segue.destination as! RecetaDetailViewController
+                
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedReceta = recetasArray[indexPath.row]
+            }
         }
+        
     }
     
-    
-    //MARK - Data Manipulation methods
+    //MARK: - Data Manipulation methods
     
     func save(receta: Receta) {
         do {
-            try realm.write {
-                realm.add(receta)
-            }
+            try context.save()
         } catch {
             print("Error saving receta \(error)")
         }
@@ -80,41 +99,43 @@ class RecetasViewController: SwipeTableViewController, UISearchBarDelegate {
     
     
     
-    func loadRecetas() {
-        recetasArray = realm.objects(Receta.self).sorted(byKeyPath: "name")
+    func loadRecetas(with request: NSFetchRequest<Receta> = Receta.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        do {
+            recetasArray = try context.fetch(request)
+        } catch {
+            print(error)
+        }
         tableView.reloadData()
 
     }
     
     
-    //MARK - Delete Data from Swipe
+    //MARK: - Delete Data from Swipe
     
-    override func updateModel (at indexPath: IndexPath) {
-        if let recetaForDeletion = self.recetasArray?[indexPath.row] {
+   func updateModel (at indexPath: IndexPath) {
         do {
-            try self.realm.write {
-                self.realm.delete(recetaForDeletion)
-            }
+            context.delete(recetasArray[indexPath.row])
+            recetasArray.remove(at: indexPath.row)
+            try context.save()
         } catch {
             print(error)
         }
         
-        }
     }
     
-    //MARK - Add New Recetas
-
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
-        performSegue(withIdentifier: "AddReceta", sender: self)
-    }
     
-    //MARK - SearchBar delegate methods
+    
+    //MARK: - SearchBar delegate methods
         
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        recetasArray = recetasArray?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-        tableView.reloadData()
+        let request : NSFetchRequest<Receta> = Receta.fetchRequest()
+
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+
+        loadRecetas(with: request, predicate: predicate)
         
     }
 
@@ -128,7 +149,18 @@ class RecetasViewController: SwipeTableViewController, UISearchBarDelegate {
         }
 
     }
-
+    
+//    MARK: - Add receta
+    
+    
+    @IBAction func addReceta(_ sender: UIBarButtonItem) {
+    }
+    
 }
 
-
+//extension RecetasViewController : AddRecetaDelegate {
+//    func addReceta(receta: Receta) {
+//        self.recetasArray.append(receta)
+//        self.tableView.reloadData()
+//}
+//}

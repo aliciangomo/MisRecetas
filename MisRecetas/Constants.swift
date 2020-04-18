@@ -10,13 +10,14 @@ import Foundation
 
 struct K {
     static let appName = "MisRecetas"
-    static let cell = "RecetaCell"
+    static let cell = "Cell"
  
     
     struct BrandColors {
         static let red = "BrandRed"
         static let darkRed = "BrandDarkRed"
         static let green = "BrandGreen"
+        static let darkGreen = "BrandDarkGreen"
         static let orange = "BrandOrange"
         static let beige = "BrandBeige"
     }

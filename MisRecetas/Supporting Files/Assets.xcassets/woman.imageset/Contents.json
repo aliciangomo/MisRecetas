@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "woman-sitting-on-table-holding-black-whisk-and-cookbook-2168783.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

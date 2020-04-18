@@ -3,19 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A42585C55CDC030C84D9B8 /* Pods_MisRecetas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D55E25D845321A73F5C79D /* Pods_MisRecetas.framework */; };
 		C024D4E12430C19C000393CC /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C024D4E02430C19C000393CC /* SwipeTableViewController.swift */; };
+		C0357285243FBD4B005067FE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0357284243FBD4B005067FE /* CustomButton.swift */; };
+		C0357287243FBF2A005067FE /* Gradient + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0357286243FBF2A005067FE /* Gradient + Extension.swift */; };
 		C05A721C242F5A6500CCFDCF /* RecetasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A721B242F5A6500CCFDCF /* RecetasViewController.swift */; };
-		C05A7220242F87A800CCFDCF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A721F242F87A800CCFDCF /* Ingredient.swift */; };
-		C05A7222242F87B500CCFDCF /* Receta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A7221242F87B500CCFDCF /* Receta.swift */; };
-		C0A9C233243501ED00B41323 /* Dose.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9C232243501ED00B41323 /* Dose.swift */; };
 		C0A9D7FC2436523F006E1AD1 /* RecetaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D7FB2436523F006E1AD1 /* RecetaDetailViewController.swift */; };
 		C0A9D7FE24367C16006E1AD1 /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D7FD24367C16006E1AD1 /* IngredientViewController.swift */; };
+		C0C1F4E62443CE4900FE1656 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F4E42443CE4900FE1656 /* DataModel.xcdatamodeld */; };
 		C0E677E6242928CB00642C83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E677E5242928CB00642C83 /* Constants.swift */; };
-		CC72832B574F64D225D21402 /* Pods_MisRecetas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DC3E6326B1838CF795CDFF /* Pods_MisRecetas.framework */; };
 		EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4F9239524DB00FB933B /* AppDelegate.swift */; };
 		EB2BE4FE239524DB00FB933B /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4FD239524DB00FB933B /* AddViewController.swift */; };
 		EB2BE501239524DB00FB933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE4FF239524DB00FB933B /* Main.storyboard */; };
@@ -24,17 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		00DC3E6326B1838CF795CDFF /* Pods_MisRecetas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MisRecetas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FC57C2ED3B33EBD3859B3D8 /* Pods-Todoey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.debug.xcconfig"; path = "Target Support Files/Pods-Todoey/Pods-Todoey.debug.xcconfig"; sourceTree = "<group>"; };
+		23D55E25D845321A73F5C79D /* Pods_MisRecetas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MisRecetas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4599DA447C1B19AFE3230FBF /* Pods-MisRecetas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisRecetas.release.xcconfig"; path = "Target Support Files/Pods-MisRecetas/Pods-MisRecetas.release.xcconfig"; sourceTree = "<group>"; };
-		996CE16083EE20F1A29785F6 /* Pods-Todoey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.release.xcconfig"; path = "Target Support Files/Pods-Todoey/Pods-Todoey.release.xcconfig"; sourceTree = "<group>"; };
 		C024D4E02430C19C000393CC /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		C0357284243FBD4B005067FE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		C0357286243FBF2A005067FE /* Gradient + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient + Extension.swift"; sourceTree = "<group>"; };
 		C05A721B242F5A6500CCFDCF /* RecetasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetasViewController.swift; sourceTree = "<group>"; };
-		C05A721F242F87A800CCFDCF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		C05A7221242F87B500CCFDCF /* Receta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receta.swift; sourceTree = "<group>"; };
-		C0A9C232243501ED00B41323 /* Dose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dose.swift; sourceTree = "<group>"; };
 		C0A9D7FB2436523F006E1AD1 /* RecetaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaDetailViewController.swift; sourceTree = "<group>"; };
 		C0A9D7FD24367C16006E1AD1 /* IngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewController.swift; sourceTree = "<group>"; };
+		C0C1F4E52443CE4900FE1656 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		C0E677E5242928CB00642C83 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEFF583B219EC1FDF70127 /* Pods-MisRecetas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisRecetas.debug.xcconfig"; path = "Target Support Files/Pods-MisRecetas/Pods-MisRecetas.debug.xcconfig"; sourceTree = "<group>"; };
 		EB2BE4F6239524DB00FB933B /* MisRecetas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisRecetas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC72832B574F64D225D21402 /* Pods_MisRecetas.framework in Frameworks */,
+				04A42585C55CDC030C84D9B8 /* Pods_MisRecetas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +59,6 @@
 		A30CBB6B1C4EA366FEE8D3D5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1FC57C2ED3B33EBD3859B3D8 /* Pods-Todoey.debug.xcconfig */,
-				996CE16083EE20F1A29785F6 /* Pods-Todoey.release.xcconfig */,
 				DCBEFF583B219EC1FDF70127 /* Pods-MisRecetas.debug.xcconfig */,
 				4599DA447C1B19AFE3230FBF /* Pods-MisRecetas.release.xcconfig */,
 			);
@@ -72,7 +68,7 @@
 		B28F100D3D6950A2CDEB026F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00DC3E6326B1838CF795CDFF /* Pods_MisRecetas.framework */,
+				23D55E25D845321A73F5C79D /* Pods_MisRecetas.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -80,9 +76,7 @@
 		C0D941EB242E859100150B76 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				C05A721F242F87A800CCFDCF /* Ingredient.swift */,
-				C05A7221242F87B500CCFDCF /* Receta.swift */,
-				C0A9C232243501ED00B41323 /* Dose.swift */,
+				C0C1F4E42443CE4900FE1656 /* DataModel.xcdatamodeld */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -100,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				EB2BE4FF239524DB00FB933B /* Main.storyboard */,
+				C0357284243FBD4B005067FE /* CustomButton.swift */,
+				C0357286243FBF2A005067FE /* Gradient + Extension.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,7 +155,7 @@
 				EB2BE4F2239524DB00FB933B /* Sources */,
 				EB2BE4F3239524DB00FB933B /* Frameworks */,
 				EB2BE4F4239524DB00FB933B /* Resources */,
-				1D900AE92FBFFE698C3E88B3 /* [CP] Embed Pods Frameworks */,
+				FA384812741D515684789228 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,23 +213,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1D900AE92FBFFE698C3E88B3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MisRecetas/Pods-MisRecetas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MisRecetas/Pods-MisRecetas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisRecetas/Pods-MisRecetas-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DDA86CAE403D8DB2F490A5EB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +235,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FA384812741D515684789228 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MisRecetas/Pods-MisRecetas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MisRecetas/Pods-MisRecetas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisRecetas/Pods-MisRecetas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -263,16 +259,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0A9C233243501ED00B41323 /* Dose.swift in Sources */,
 				C05A721C242F5A6500CCFDCF /* RecetasViewController.swift in Sources */,
 				C0A9D7FC2436523F006E1AD1 /* RecetaDetailViewController.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* AddViewController.swift in Sources */,
-				C05A7220242F87A800CCFDCF /* Ingredient.swift in Sources */,
 				C024D4E12430C19C000393CC /* SwipeTableViewController.swift in Sources */,
 				C0A9D7FE24367C16006E1AD1 /* IngredientViewController.swift in Sources */,
+				C0357285243FBD4B005067FE /* CustomButton.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
 				C0E677E6242928CB00642C83 /* Constants.swift in Sources */,
-				C05A7222242F87B500CCFDCF /* Receta.swift in Sources */,
+				C0C1F4E62443CE4900FE1656 /* DataModel.xcdatamodeld in Sources */,
+				C0357287243FBF2A005067FE /* Gradient + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +473,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C0C1F4E42443CE4900FE1656 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C0C1F4E52443CE4900FE1656 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = C0C1F4E52443CE4900FE1656 /* DataModel.xcdatamodel */;
+			name = DataModel.xcdatamodeld;
+			path = ../../Pods/DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB2BE4EE239524DB00FB933B /* Project object */;
 }
