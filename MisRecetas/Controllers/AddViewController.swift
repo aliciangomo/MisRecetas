@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 
 
-
-
 class AddViewController: UIViewController, UITextFieldDelegate {
 
     
@@ -31,10 +29,8 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
-
     
         setInitViews()
-        
     }
     
     func setInitViews() {
@@ -42,7 +38,6 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         recetaName.delegate = self
         recetaLink.delegate = self
         recetaPasos.delegate = self
-    
     }
     
     
@@ -68,19 +63,14 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             
-            let newReceta = Receta(context: context)
+            let newReceta = Receta()
             newReceta.name = recetaName.text!
             newReceta.link = recetaLink.text!
             newReceta.pasos = recetaPasos.text!
-
             save(receta: newReceta)
         }
     }
     
-
-//    @objc func handleCancel() {
-//        self.dismiss(animated: true, completion: nil)
-//    }
 
 
     
@@ -88,7 +78,6 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.becomeFirstResponder()
-        
         return true
     }
 
@@ -117,24 +106,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         } catch {
             print("Error saving receta \(error.localizedDescription)")
         }
-
     }
-    
-//    @IBAction func addRecetaPressed(_ sender: UIButton,_ data: Data) {
-//
-////        if let imageData = recetaImage.image?.pngData() {
-//            let newReceta = Receta(context: context)
-////            newReceta.image = imageData
-//            newReceta.name = recetaName.text!
-//            newReceta.link = recetaLink.text!
-//            newReceta.pasos = recetaPasos.text!
-//
-//            do {
-//                try context.save()
-//            } catch {
-//                print("Error saving receta \(error.localizedDescription)")
-//            }
-//        }
         
         
     //MARK: - Perform segue

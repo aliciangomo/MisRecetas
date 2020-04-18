@@ -23,7 +23,7 @@ class RecetasViewController: UITableViewController, UISearchBarDelegate {
        
         loadRecetas()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 100.0
+        tableView.rowHeight = 80.0
         tableView.separatorStyle = .none
         
     }
@@ -37,7 +37,7 @@ class RecetasViewController: UITableViewController, UISearchBarDelegate {
      
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let receta = recetasArray[indexPath.row]
         
@@ -158,9 +158,3 @@ class RecetasViewController: UITableViewController, UISearchBarDelegate {
     
 }
 
-//extension RecetasViewController : AddRecetaDelegate {
-//    func addReceta(receta: Receta) {
-//        self.recetasArray.append(receta)
-//        self.tableView.reloadData()
-//}
-//}

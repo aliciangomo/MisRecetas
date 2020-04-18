@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		04A42585C55CDC030C84D9B8 /* Pods_MisRecetas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D55E25D845321A73F5C79D /* Pods_MisRecetas.framework */; };
-		C024D4E12430C19C000393CC /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C024D4E02430C19C000393CC /* SwipeTableViewController.swift */; };
 		C0357285243FBD4B005067FE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0357284243FBD4B005067FE /* CustomButton.swift */; };
 		C0357287243FBF2A005067FE /* Gradient + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0357286243FBF2A005067FE /* Gradient + Extension.swift */; };
+		C0540BA9244B5DF000FA25AB /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0540BA8244B5DF000FA25AB /* IngredientTableViewCell.swift */; };
 		C05A721C242F5A6500CCFDCF /* RecetasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A721B242F5A6500CCFDCF /* RecetasViewController.swift */; };
 		C0A9D7FC2436523F006E1AD1 /* RecetaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D7FB2436523F006E1AD1 /* RecetaDetailViewController.swift */; };
 		C0A9D7FE24367C16006E1AD1 /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D7FD24367C16006E1AD1 /* IngredientViewController.swift */; };
@@ -26,9 +26,9 @@
 /* Begin PBXFileReference section */
 		23D55E25D845321A73F5C79D /* Pods_MisRecetas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MisRecetas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4599DA447C1B19AFE3230FBF /* Pods-MisRecetas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisRecetas.release.xcconfig"; path = "Target Support Files/Pods-MisRecetas/Pods-MisRecetas.release.xcconfig"; sourceTree = "<group>"; };
-		C024D4E02430C19C000393CC /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		C0357284243FBD4B005067FE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		C0357286243FBF2A005067FE /* Gradient + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient + Extension.swift"; sourceTree = "<group>"; };
+		C0540BA8244B5DF000FA25AB /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IngredientTableViewCell.swift; path = MisRecetas/Views/IngredientTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		C05A721B242F5A6500CCFDCF /* RecetasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetasViewController.swift; sourceTree = "<group>"; };
 		C0A9D7FB2436523F006E1AD1 /* RecetaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaDetailViewController.swift; sourceTree = "<group>"; };
 		C0A9D7FD24367C16006E1AD1 /* IngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewController.swift; sourceTree = "<group>"; };
@@ -103,8 +103,8 @@
 		C0D941EE242E85DA00150B76 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C0540BA8244B5DF000FA25AB /* IngredientTableViewCell.swift */,
 				C05A721B242F5A6500CCFDCF /* RecetasViewController.swift */,
-				C024D4E02430C19C000393CC /* SwipeTableViewController.swift */,
 				EB2BE4FD239524DB00FB933B /* AddViewController.swift */,
 				C0A9D7FB2436523F006E1AD1 /* RecetaDetailViewController.swift */,
 				C0A9D7FD24367C16006E1AD1 /* IngredientViewController.swift */,
@@ -259,10 +259,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0540BA9244B5DF000FA25AB /* IngredientTableViewCell.swift in Sources */,
 				C05A721C242F5A6500CCFDCF /* RecetasViewController.swift in Sources */,
 				C0A9D7FC2436523F006E1AD1 /* RecetaDetailViewController.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* AddViewController.swift in Sources */,
-				C024D4E12430C19C000393CC /* SwipeTableViewController.swift in Sources */,
 				C0A9D7FE24367C16006E1AD1 /* IngredientViewController.swift in Sources */,
 				C0357285243FBD4B005067FE /* CustomButton.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,

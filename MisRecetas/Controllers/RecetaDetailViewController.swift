@@ -41,9 +41,7 @@ class RecetaDetailViewController: UIViewController {
         let predicate = NSPredicate(format: "parentReceta.name MATCHES %@", selectedReceta!.name!)
         let vc = segue.destination as! IngredientViewController
         vc.loadIngredients(with: request, predicate: predicate)
-            if let button = vc.addIngredientButton {
-                button.isHidden = true
-            }
+        
         }
     }
 

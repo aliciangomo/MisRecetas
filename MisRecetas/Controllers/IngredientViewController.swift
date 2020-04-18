@@ -30,10 +30,10 @@ class IngredientViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ingredientTable.register(IngredientTableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         loadIngredients()
         ingredientTable.separatorStyle = .none
     }
-    
     
     //MARK: - TableView Datasource methods
     
@@ -43,10 +43,14 @@ class IngredientViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as! IngredientTableViewCell
         
-        cell.textLabel?.text = "\(String(describing: ingredientsArray[indexPath.row].name)) - \(String(describing: ingredientsArray[indexPath.row].dose?.measure)) \(String(describing: ingredientsArray[indexPath.row].dose?.amount)) "
+        cell.ingredient.text = ingredientsArray[indexPath.row].name
+        cell.measure.text = ingredientsArray[indexPath.row].dose?.measure
+        cell.quantity.text = ingredientsArray[indexPath.row].dose?.amount
+        
         return cell
+   
     }
     
     //MARK: - Model manipulation methods
@@ -85,40 +89,38 @@ class IngredientViewController: UIViewController, UITableViewDelegate, UITableVi
         let alert = UIAlertController(title: "Add new ingredient", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add ingredient", style: .default) {(action) in
-            let currentReceta = self.context.object(with: self.newReceta!.objectID)
             
             let newIngredient = Ingredient(context: self.context)
             newIngredient.name = nameTextField.text!
-            newIngredient.parentReceta = currentReceta as? Receta
             let newDose = Dose(context: self.context)
             newDose.measure = measureTextField.text!
             newDose.amount = amountTextField.text!
             newIngredient.dose = newDose
             self.ingredientsArray.append(newIngredient)
-            
+           
             self.saveIngredient(ingredient: newIngredient)
             
         }
     
-    alert.addTextField { (name) in
-    name.placeholder = "Nombre"
-    nameTextField = name
+        alert.addTextField { (name) in
+        name.placeholder = "Nombre"
+        nameTextField = name
+        }
+        
+        alert.addTextField { (measure) in
+        measure.placeholder = "Medida"
+        measureTextField = measure
+        }
+        
+        alert.addTextField { (amount) in
+        amount.placeholder = "Cantidad"
+        amountTextField = amount
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
-    
-    alert.addTextField { (measure) in
-    measure.placeholder = "Medida"
-    measureTextField = measure
-    }
-    
-    alert.addTextField { (amount) in
-    amount.placeholder = "Cantidad"
-    amountTextField = amount
-    }
-    
-    alert.addAction(action)
-    
-    present(alert, animated: true, completion: nil)
-}
 
 }
 
