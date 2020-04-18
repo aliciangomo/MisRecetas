@@ -30,20 +30,20 @@ class RecetaDetailViewController: UIViewController {
         nameShow.text = selectedReceta?.name
         linkShow.text = selectedReceta?.link
         pasosShow.text = selectedReceta?.pasos
-        
-        showIngredients()
+        self.navigationItem.title = selectedReceta?.name
+
     }
     
-    func showIngredients() {
-        performSegue(withIdentifier: "showIngredients", sender: self)
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "ShowIngredients") {
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
         let predicate = NSPredicate(format: "parentReceta.name MATCHES %@", selectedReceta!.name!)
         let vc = segue.destination as! IngredientViewController
         vc.loadIngredients(with: request, predicate: predicate)
+            if let button = vc.addIngredientButton {
+                button.isHidden = true
+            }
         }
     }
 

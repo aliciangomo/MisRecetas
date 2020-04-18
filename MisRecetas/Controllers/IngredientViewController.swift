@@ -85,40 +85,40 @@ class IngredientViewController: UIViewController, UITableViewDelegate, UITableVi
         let alert = UIAlertController(title: "Add new ingredient", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add ingredient", style: .default) {(action) in
-            if let currentReceta = self.newReceta {
-                
-                let newIngredient = Ingredient(context: self.context)
-                newIngredient.name = nameTextField.text!
-                newIngredient.parentReceta = currentReceta
-                let newDose = Dose(context: self.context)
-                newDose.measure = measureTextField.text!
-                newDose.amount = amountTextField.text!
-                newIngredient.dose = newDose
-                self.ingredientsArray.append(newIngredient)
-                
-                self.saveIngredient(ingredient: newIngredient)
-                
-            }
+            let currentReceta = self.context.object(with: self.newReceta!.objectID)
+            
+            let newIngredient = Ingredient(context: self.context)
+            newIngredient.name = nameTextField.text!
+            newIngredient.parentReceta = currentReceta as? Receta
+            let newDose = Dose(context: self.context)
+            newDose.measure = measureTextField.text!
+            newDose.amount = amountTextField.text!
+            newIngredient.dose = newDose
+            self.ingredientsArray.append(newIngredient)
+            
+            self.saveIngredient(ingredient: newIngredient)
+            
         }
     
     alert.addTextField { (name) in
-        name.placeholder = "Nombre"
-        nameTextField = name
+    name.placeholder = "Nombre"
+    nameTextField = name
     }
     
     alert.addTextField { (measure) in
-        measure.placeholder = "Medida"
-        measureTextField = measure
+    measure.placeholder = "Medida"
+    measureTextField = measure
     }
     
     alert.addTextField { (amount) in
-        amount.placeholder = "Cantidad"
-        amountTextField = amount
+    amount.placeholder = "Cantidad"
+    amountTextField = amount
     }
     
     alert.addAction(action)
     
     present(alert, animated: true, completion: nil)
 }
+
 }
 
