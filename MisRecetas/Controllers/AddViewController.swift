@@ -28,7 +28,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
     
         setInitViews()
     }
@@ -43,7 +43,8 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
 //    MARK: - Selectors
     
-    @objc func handleDone() {
+    
+    @IBAction func saveReceta(_ sender: CustomButton) {
         
         if recetaName.text!.isEmpty {
                    let alert = UIAlertController(title: nil, message: "No olvides el nombre de tu receta", preferredStyle: .alert)
